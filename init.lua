@@ -4,7 +4,7 @@ local max_radius = tonumber(ms:get "simple_woodcutter.max_radius") or 1
 local delay = tonumber(ms:get "simple_woodcutter.delay") or 0.01
 local S = mt.get_translator(mt.get_current_modname())
 
-minetest.register_privilege("lumberjack", {
+mt.register_privilege("lumberjack", {
                              description = S("Player can lumber trees fast.")})
 
 local function chop_around(pos, oldnode, digger)
