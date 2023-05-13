@@ -1,11 +1,15 @@
 local ms, mt = minetest.settings, minetest
 local max_distance = tonumber(ms:get "simple_woodcutter.max_distance") or 40
 local max_radius = tonumber(ms:get "simple_woodcutter.max_radius") or 1
+<<<<<<< HEAD
+local delay = tonumber(ms:get "simple_woodcutter.delay") or 1
+=======
 local delay = tonumber(ms:get "simple_woodcutter.delay") or 0.01
 local S = mt.get_translator(mt.get_current_modname())
 
 minetest.register_privilege("lumberjack", {
                              description = S("Player can lumber trees fast.")})
+>>>>>>> Lumberjack
 
 local function chop_around(pos, oldnode, digger)
   local next_pos, digger_pos
@@ -26,7 +30,11 @@ mt.register_on_dignode(function(pos, oldnode, digger)
   if not mt.registered_nodes[oldnode.name].groups.tree then return end
   if not digger:get_wielded_item():get_definition().groups.axe then return end
   if digger:get_hp() == 0 then return end
+<<<<<<< HEAD
   if not digger:get_player_control().sneak then return end
+  chop_around(pos, oldnode, digger)
+=======
   if not mt.check_player_privs(digger:get_player_name(), {lumberjack=true}) then return end
   minetest.after(delay, chop_around, pos, oldnode, digger)
+>>>>>>> Lumberjack
 end)
