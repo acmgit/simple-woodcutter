@@ -1,0 +1,6 @@
+# textdomain: simple_woodcutter
+
+
+### init.lua ###
+
+Player can lumber trees fast.=
