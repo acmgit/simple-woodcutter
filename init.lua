@@ -28,7 +28,7 @@ mt.register_on_dignode(function(pos, oldnode, digger)
   if not mt.check_player_privs(digger:get_player_name(), {lumberjack=true}) then return end
   if not digger:get_wielded_item():get_definition().groups.axe then return end
   if digger:get_hp() == 0 then return end
-  if not mt.registered_node[oldnode.name] then return end
+  if not mt.registered_nodes[oldnode.name] then return end
   if not mt.registered_nodes[oldnode.name].groups.tree then return end
 
 
