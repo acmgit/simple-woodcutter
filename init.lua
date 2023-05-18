@@ -14,7 +14,7 @@ local function chop_around(pos, oldnode, digger)
       function()
           next_pos = mt.find_node_near(pos, max_radius, {oldnode.name, "group:leaves"})
           if not next_pos then return end
-          if not mt.check_player_control().sneak then return end
+          if not digger:get_player_control().sneak then return end
           digger_pos = digger:get_pos()
           if not digger_pos then return end
           mt.node_dig(next_pos, mt.get_node(next_pos), digger)
