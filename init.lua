@@ -8,10 +8,12 @@ mt.register_privilege("lumberjack", {
                              description = S("Player can lumber trees fast.")})
 
 local function chop_around(pos, oldnode, digger)
+  if (not digger) then return end
   local next_pos, digger_pos
   for distance = 1, max_distance do
       mt.after(delay,
       function()
+          if (not digger) then return end
           next_pos = mt.find_node_near(pos, max_radius, {oldnode.name, "group:leaves"})
           if not next_pos then return end
           if not digger:get_player_control().sneak then return end
