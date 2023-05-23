@@ -26,6 +26,7 @@ local function chop_around(pos, oldnode, digger)
 end -- function
 
 mt.register_on_dignode(function(pos, oldnode, digger)
+  if not digger then return end
   if not digger:get_player_control().sneak then return end
   if not mt.check_player_privs(digger:get_player_name(), {lumberjack=true}) then return end
   if not digger:get_wielded_item():get_definition().groups.axe then return end
