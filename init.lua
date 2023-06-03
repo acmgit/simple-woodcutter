@@ -4,9 +4,6 @@ local max_radius = tonumber(ms:get "simple_woodcutter.max_radius") or 1
 local delay = tonumber(ms:get "simple_woodcutter.delay") or 0.01
 local S = mt.get_translator(mt.get_current_modname())
 
-mt.register_privilege("lumberjack", {
-                             description = S("Player can lumber trees fast.")})
-
 local function chop_around(pos, oldnode, digger)
   if (not digger) then return end
   local next_pos, digger_pos
@@ -28,7 +25,7 @@ end -- function
 mt.register_on_dignode(function(pos, oldnode, digger)
   if not digger then return end
   if not digger:get_player_control().sneak then return end
-  if not mt.check_player_privs(digger:get_player_name(), {lumberjack=true}) then return end
+  if not mt.check_player_privs(digger:get_player_name(), {interact=true}) then return end
   if not digger:get_wielded_item():get_definition().groups.axe then return end
   if digger:get_hp() == 0 then return end
   if not mt.registered_nodes[oldnode.name] then return end
